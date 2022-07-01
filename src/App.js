@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import styled from "styled-components";
+import Navbar from "./Components/Navbar";
+import FormComponent from "./Components/FormComponent";
+import Footer from "./Components/Footer";
+import { useState } from "react";
 
+const Component = styled.div`
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;
+  justify-content: center; */
+    width: 100%;
+    height: 100vh;
+`;
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [activeStep, setActiveStep] = useState(0);
+    return (
+        <Component>
+            <Navbar activeStep={activeStep} setActiveStep={setActiveStep} />
+            <FormComponent
+                activeStep={activeStep}
+                setActiveStep={setActiveStep}
+            />
+            <Footer activeStep={activeStep} setActiveStep={setActiveStep} />
+        </Component>
+    );
 }
 
 export default App;
